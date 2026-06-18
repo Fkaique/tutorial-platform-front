@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+    --color-primary: #1E293B;
+    --color-secondary: #f97316;
+    --color-white: #f1f1f1;
+    --color-black: #131313;
+
+    --font-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+    --font-serif: 'Lora', Georgia, 'Times New Roman', Times, serif;
+    --font-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-monospace: 'JetBrains Mono', 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-sans-serif);
+}
+
+.font-serif { font-family: var(--font-serif); }
+.font-sans-serif { font-family: var(--font-sans-serif); }
+.font-heading { font-family: var(--font-heading); }
+.font-monospace { font-family: var(--font-monospace); }
+
+.col-white { color: var(--color-white); }
+.col-black { color: var(--color-black); }
+.col-primary { color: var(--color-primary); }
+.col-secondary { color: var(--color-secondary); }
