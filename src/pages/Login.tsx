@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import axios from 'axios'
 import { api } from '../services/api'
 
 export default function Login() {
@@ -22,18 +21,15 @@ export default function Login() {
       return
     }
 
-    // Dentro do seu try/catch na função handleLogin:
     try {
-      // Passamos a usar a nossa 'api' configurada
       const response = await api.post('/users/login', {
         email,
         password
       });
 
-      // Salva tudo o que seu backend Express retorna nos testes
       localStorage.setItem('@tutorials:user', JSON.stringify(response.data.user));
       localStorage.setItem('@tutorials:token', response.data.accessToken);
-      localStorage.setItem('@tutorials:refreshToken', response.data.refreshToken); // 💡 SALVA O REFRESH AQUI
+      localStorage.setItem('@tutorials:refreshToken', response.data.refreshToken);
 
       navigate('/');
     } catch (err: any) {

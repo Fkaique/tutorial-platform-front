@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { AppRoutes } from './routes' // Garanta que está importando de ./routes
+import { AppRoutes } from './routes'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
