@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3333'
+  baseURL: 'https://tutorial-platform-api1.onrender.com'
 });
 
 api.interceptors.request.use(
@@ -31,7 +31,7 @@ api.interceptors.response.use(
           return Promise.reject(error);
         }
 
-        const response = await axios.post('http://localhost:3000/users/refresh', {
+        const response = await axios.post('https://tutorial-platform-api1.onrender.com/users/refresh', {
           refreshToken,
         });
 
