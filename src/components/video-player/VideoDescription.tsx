@@ -8,6 +8,7 @@ interface VideoDescriptionProps {
 }
 
 export default function VideoDescription({ title, author, description, tags }: VideoDescriptionProps) {
+  // Garante que tazgs seja um array válido para o map
   const validTags: string[] = Array.isArray(tags)
     ? tags
     : typeof tags === 'string'

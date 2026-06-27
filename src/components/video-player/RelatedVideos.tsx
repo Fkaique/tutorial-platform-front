@@ -15,8 +15,10 @@ interface RelatedVideosProps {
 }
 
 export default function RelatedVideos({ categoryId, currentVideoId }: RelatedVideosProps) {
+  // Busca os vídeos da mesma categoria para sugerir na lateral
   const { data: videos, isFetching } = useFetch<Video[]>(`/videos?categoryId=${categoryId}`);
 
+  // Filtra o vídeo atual para não recomendar ele mesmo
   const filteredVideos = videos?.filter(video => video.id !== currentVideoId) || [];
 
   if (isFetching) {
@@ -50,6 +52,7 @@ export default function RelatedVideos({ categoryId, currentVideoId }: RelatedVid
             key={video.id}
             className="flex gap-3 p-2 bg-white/0 hover:bg-white/5 rounded-xl border border-transparent hover:border-white/5 transition-all duration-200 group cursor-pointer"
           >
+            {/* Thumbnail Compacta */}
             <div className="w-28 md:w-32 aspect-video rounded-lg overflow-hidden bg-slate-800 flex-shrink-0 relative">
               <img
                 src={video.thumbnailUrl}
@@ -64,6 +67,7 @@ export default function RelatedVideos({ categoryId, currentVideoId }: RelatedVid
               </div>
             </div>
 
+            {/* Textos */}
             <div className="flex flex-col justify-center min-w-0">
               <h4 className="font-sans-serif font-semibold text-xs col-white line-clamp-2 group-hover:col-secondary transition-colors leading-tight">
                 {video.title}

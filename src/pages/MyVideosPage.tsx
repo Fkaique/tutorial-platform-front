@@ -19,6 +19,7 @@ export default function MyVideosPage() {
     const [myVideos, setMyVideos] = useState<UserVideo[]>([]);
     const [deletingId, setDeletingId] = useState<string | number | null>(null);
 
+    // Sincroniza a listagem quando o useFetch trouxer os dados do backend
     useEffect(() => {
         if (initialVideos) {
             setMyVideos(initialVideos);

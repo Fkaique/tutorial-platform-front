@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../services/api';
-import { User, Settings, LogOut, Users, ChevronDown } from 'lucide-react'; // Importado ícone para categorias
+import { User, Settings, LogOut, Users, ChevronDown } from 'lucide-react'; 
 
 interface UserSession {
   name: string;
@@ -93,6 +93,7 @@ export default function UserMenu({ user, setUser }: UserMenuProps) {
             )}
           </div>
 
+          {/* 💡 SÓ APARECE SE FOR ADMIN: Link para gerenciar categorias */}
           {user.role === 'ADMIN' && (
             <Link
               to="/categorias/gerenciar"

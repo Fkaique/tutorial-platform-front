@@ -11,7 +11,7 @@ export default function VideoPlayer({ videoUrl, posterUrl }: VideoPlayerProps) {
         poster={posterUrl}
         controls
         className="w-full h-full object-contain"
-        controlsList="nodownload" 
+        controlsList="nodownload" // Evita o botão de download padrão em navegadores Chromium
       >
         Seu navegador não suporta a reprodução de vídeos.
       </video>

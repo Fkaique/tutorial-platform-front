@@ -101,6 +101,7 @@ export default function Home() {
               currentVideos.map((video) => (
                 <VideoCard
                   key={video.id}
+                  id={video.id}
                   title={video.title}
                   author={video.author}
                   tags={video.tags}

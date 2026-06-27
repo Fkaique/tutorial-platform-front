@@ -41,7 +41,7 @@ export default function UploadInput({ label, accept, onChange, selectedFile, hel
         </span>
         
         <span className="font-sans-serif text-xs col-white/40 text-center">
-          {helperText}
+          {helperText}z
         </span>
       </div>
     </div>

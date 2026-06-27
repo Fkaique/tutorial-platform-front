@@ -59,7 +59,7 @@ export default function VideoFeedCard({ video }: VideoFeedCardProps) {
           <p className="font-sans-serif text-xs col-white/50 line-clamp-2 mt-1">
             {video.description || 'Sem descrição fornecida para esta aula.'}
           </p>
-        </div>
+        </div>z
 
         <div className="flex items-center justify-between pt-3 border-t border-t-white/5 text-[11px] col-white/40 font-sans-serif">
           <div className="flex items-center gap-1.5 truncate max-w-[65%]">

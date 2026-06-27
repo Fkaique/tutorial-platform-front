@@ -1,11 +1,14 @@
+import { Link } from 'react-router-dom';
+
 interface VideoCardProps {
+  id: string | number;
   title: string;
   author: string;
   tags?: string[] | string | any; 
   thumb: string;
 }
 
-export default function VideoCard({ title, author, tags, thumb }: VideoCardProps) {
+export default function VideoCard({ id, title, author, tags, thumb }: VideoCardProps) {
 
   const validTags: string[] = Array.isArray(tags) 
     ? tags 
@@ -14,7 +17,10 @@ export default function VideoCard({ title, author, tags, thumb }: VideoCardProps
       : [];
 
   return (
-    <div className="min-w-[280px] max-w-[280px] bg-[var(--color-black)] rounded-xl overflow-hidden border border-[var(--color-white)]/5 flex flex-col justify-between group cursor-pointer hover:border-[var(--color-secondary)]/30 transition-all duration-300">
+    <Link
+      to={`/video/${id}`}
+      className="min-w-[280px] max-w-[280px] bg-[var(--color-black)] rounded-xl overflow-hidden border border-[var(--color-white)]/5 flex flex-col justify-between group cursor-pointer hover:border-[var(--color-secondary)]/30 transition-all duration-300"
+    >
 
       <div className="aspect-video w-full bg-slate-800 overflow-hidden relative">
         <img 
@@ -27,7 +33,7 @@ export default function VideoCard({ title, author, tags, thumb }: VideoCardProps
           }}
         />
       </div>
-
+          
       <div className="p-4 flex flex-col flex-grow justify-between gap-3">
         <div>
           <h4 className="font-heading font-semibold text-base col-white line-clamp-1 group-hover:text-[var(--color-secondary)] transition-colors">
@@ -49,6 +55,6 @@ export default function VideoCard({ title, author, tags, thumb }: VideoCardProps
           </div>
         )}
       </div>
-    </div>
+    </Link>
   );
 }

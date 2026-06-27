@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://tutorial-plataform-api-1.onrender.com'
-  // baseURL: 'http://localhost:3000'
+  baseURL: 'http://localhost:3000',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 api.interceptors.request.use(
@@ -17,7 +19,7 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-  (response) => response,
+  (response) => response, 
   async (error) => {
     const originalRequest = error.config;
 
@@ -26,20 +28,23 @@ api.interceptors.response.use(
 
       try {
         const refreshToken = localStorage.getItem('@tutorials:refreshToken');
-
+        
         if (!refreshToken) {
           logoutLocal();
           return Promise.reject(error);
         }
 
-        const response = await axios.post('https://tutorial-platform-api1.onrender.com/users/refresh', {
+        // Bate na rota de refresh do seu UserController
+        const response = await axios.post('http://localhost:3000/users/refresh', {
           refreshToken,
         });
 
         const { accessToken } = response.data;
 
+        // Salva o novo token gerado
         localStorage.setItem('@tutorials:token', accessToken);
 
+        // Substitui o cabeçalho antigo pelo novo e refaz a requisição original falhada
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
         return api(originalRequest);
       } catch (refreshError) {
@@ -56,5 +61,5 @@ function logoutLocal() {
   localStorage.removeItem('@tutorials:user');
   localStorage.removeItem('@tutorials:token');
   localStorage.removeItem('@tutorials:refreshToken');
-  window.location.href = '/login';
+  window.location.href = '/login'; 
 }
