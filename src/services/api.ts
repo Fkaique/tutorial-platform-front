@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://tutorial-platform-api1.onrender.com'
+  baseURL: 'https://tutorial-plataform-api-1.onrender.com'
+  // baseURL: 'http://localhost:3000'
 });
 
 api.interceptors.request.use(
